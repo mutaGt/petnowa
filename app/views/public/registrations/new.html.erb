@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>新規会員登録</h3>
+      <%= form_with model: @member, url: member_registration_path do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
+        <table style="border:none;">
+          <tr>
+            <td><%= f.label :image, "アイコン" , class: "col-12" %></td>
+            <td><%= f.file_field :image, accept: "image/*" %></td>
+          </tr>
+          
+          <tr>
+            <td><%= f.label :name, "ユーザーネーム" , class: "col-12" %></td>
+            <td><%= f.text_field :name, autofocus: true, autocomplete: "name" %></td>
+          </tr>
+          
+          <tr>
+            <td><%= f.label :email, "メールアドレス" , class: "col-12" %></td>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+          </tr>
+          
+          <tr>
+            <td><%= f.label :password, "パスワード(6文字以上)" , class: "col-12" %></td>
+            <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+          </tr>
+          
+          <tr>
+            <td><%= f.label :password_confirmation, "パスワード確認用" , class: "col-12" %></td>
+            <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+          </tr>
+          
+          <tr>
+            <td></td>
+            <td><%= f.submit "新規登録", class: "btn btn-success mb-3" %></td>
+          </tr>
+        </table>
+      <% end %>
+
+      <%= render "public/shared/error_messages", resource: resource %>
+      
+      <div class="mb-1">登録済みの方</div>
+      <%= link_to "こちら", new_member_session_path %>からログインしてください
+    </div>
+  </div>
+</div>
