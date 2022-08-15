@@ -21,9 +21,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get '/members/unsubscribe' => 'members#unsubscribe'
     #会員ステータスの更新
     patch '/members/withdraw' => 'members#withdraw'
-    # get '/reviews/search' => 'reviews#search'
+    get '/reviews/search' => 'reviews#search'
     #↑非同期を導入するなら必要
-    resources :comments, only: [:new, :create, :edit, :update]
+    resources :comments, only: [:new, :create, :edit, :update, :destroy]
     resources :reviews
   end
   

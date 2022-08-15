@@ -1,2 +1,28 @@
-<h1>レビュー一覧</h1>
-
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3 class="mt-3">レビュー一覧</h3>
+      <% @reviews.each do |review| %>
+      <div class="card">
+        <div class="card-body">
+          <table class="table">
+            <tr>
+            <td><%= image_tag review.member.image, size: "50x50" %></td>
+            <td><%= review.mamber.name %></td>
+            <td><%= review.product_name %></td>
+            <td><%= review.title %></td>
+            </tr>
+            
+            <tr>
+              <td><%= review.evaluation %></td>
+              <td><%= review.review_content %></td>
+              <td><%= link_to "削除", review_path(review.id), method: :delete %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <% end %>
+      
+    </div>
+  </div>
+</div>

@@ -1,26 +1,26 @@
-<h1>編集画面</h1>
-<div class='container mt-5'>
+<div class='container mt-3'>
+  <h3>編集画面</h3>
   <div class='row pl-5 ml-5'>
     <%= form_with model: @member, url: members_information_path(@member.id), method: :patch do |f| %>
     <div class="form-group row">
       <div class="col-8 text">
-        <label>アイコン</label>
+        <%= f.label :image, "アイコン" %>
         <%= f.file_field :image, accept: 'image/*' %>
       </div>
     </div>
     
     <div class="form-group row">
-      <%= f.label :name, "ユーザーネーム" , class: "col-12" %>
+      <%= f.label :name, "ユーザーネーム", class: "col-12" %>
       <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
     </div>
     
     <div class="form-group row">
-      <%= f.label :email, "メールアドレス" , class: "col-12" %>
+      <%= f.label :email, "メールアドレス", class: "col-12" %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
     
     <div class="form-group row">
-      <%= f.label :password, "パスワード" , class: "col-12" %>
+      <%= f.label :password, "パスワード", class: "col-12" %>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %>文字以上)</em>
       <% end %>
@@ -28,7 +28,7 @@
     </div>
     
     <div class="form-group row">
-      <%= f.label :password_confirmation, "パスワード確認用" , class: "col-12" %>
+      <%= f.label :password_confirmation, "パスワード確認用", class: "col-12" %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
     

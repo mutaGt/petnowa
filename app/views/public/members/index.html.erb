@@ -5,14 +5,14 @@
         <% @reviews.each do |review| %>
         <div class="card">
           <div class="card-body">
-            <table>
+            <table class="table">
               <td><%= review.evaluation %></td>
               <td><%= review.product_name %></td>
               <td><%= review.title %></td>
-              <td><%= review.tag %></td>
+              <td><%= review.tags.name %></td>
               <td><%= review.review_content %></td>
               <td><%= link_to "編集", edit_review_path(review.id) %></td>
-              <td><%= link_to "削除", review_path(review.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+              <td><%= link_to "削除", review_path(member.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
             </table>
           </div>
         </div>

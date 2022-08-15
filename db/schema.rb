@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2022_08_11_075043) do
 
   create_table "review_tags", force: :cascade do |t|
     t.integer "review_id", null: false
+    t.integer "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

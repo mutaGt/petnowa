@@ -1,1 +1,21 @@
-<h1>会員のコメント一覧</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3 class="mt-3">コメント一覧</h3>
+      <table class="table">
+        <tr>
+        <th>ユーザーネーム</th>
+        <th>コメント内容</th>
+        <th>削除</th>
+        </tr>
+        <% @comments.each do |comment| %>
+        <tr style="border:none;">
+          <td><%= comment.member.name %></td>
+          <td><%= comment_content %></td>
+          <td><%= link_to "削除", admin_comment_path(comment.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>
