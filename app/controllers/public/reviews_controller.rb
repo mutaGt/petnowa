@@ -2,7 +2,6 @@ class Public::ReviewsController < ApplicationController
   
   def new
     @review = Review.new
-    byebug
     @review.review_tags.build
   end
   
@@ -60,12 +59,18 @@ class Public::ReviewsController < ApplicationController
   
   def edit
     @review = Review.find(params[:id])
+    unless @review.member == current_member
+     redirect_to reviews_path
+    end
   end
   
   def update
     @review = Review.find(params[:id])
-    @review.update(review_params)
-    redirect_to reviews_path
+    if @review.update(review_params)
+    redirect_to reviews_path(@review)
+    else
+    render :edit
+    end
   end
   
   def destroy

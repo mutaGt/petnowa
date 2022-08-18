@@ -1,18 +1,31 @@
-<div class='container mt-5'>
+<div class='container mt-3'>
   <div class='row'>
     <div class='col-10'>
-      <h4>過去の投稿</h4>
+      <h3>過去の投稿</h3>
         <% @reviews.each do |review| %>
         <div class="card">
           <div class="card-body">
-            <table class="table">
-              <td><%= review.evaluation %></td>
+            <table class="table border:none;">
+              <tr>
+                <th>評価</th>
+                <th>商品名</th>
+                <th>タイトル</th>
+                <th>タグ</th>
+                <th>レビュー内容</th>
+                <th></th>
+                <th></th>
+              </tr>
+              <tr>
+              <td><%= review.evaluation %>点</td>
               <td><%= review.product_name %></td>
               <td><%= review.title %></td>
-              <td><%= review.tags.name %></td>
+              <td><% review.tags.each do |tag| %>
+                ・<%= tag.name %><br>
+              <% end %></td>
               <td><%= review.review_content %></td>
-              <td><%= link_to "編集", edit_review_path(review.id) %></td>
-              <td><%= link_to "削除", review_path(member.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+              <td><%= link_to "編集", edit_review_path(review.id), class: "btn btn-success btn-sm" %></td>
+              <td><%= link_to "削除", member_path(review.id), method: :delete, "data-confirm" => "本当に削除しますか？" , class: "btn btn-danger btn-sm" %></td>
+              </tr>
             </table>
           </div>
         </div>

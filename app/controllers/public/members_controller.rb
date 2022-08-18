@@ -18,6 +18,12 @@ class Public::MembersController < ApplicationController
     redirect_to members_my_page_path
   end
   
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to members_path
+  end
+  
   def unsubscribe
     @member = current_member
   end

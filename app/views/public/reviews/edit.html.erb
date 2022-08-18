@@ -2,8 +2,9 @@
   <div class="row mt-3">
     <div class="col">
       <h3>レビュー編集</h3>
-      <% form_with model: @review, url: reviews_path(@review.id), method: :patch do |f| %>
       <table style="border:none;">
+      <%= form_with model: @review, url: review_path(@review.id), method: :patch do |f| %>
+      
         <tr>
           <td><%= f.label :product_name, "商品名" %></td>
           <td><%= f.text_field :product_name, autofocus: true %></td>
@@ -16,25 +17,46 @@
         
         <tr>
           <td><%= f.label "タグ" %></td>
-          <td></td>
+          <td>
+            <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+              <div class='form-check'>
+                <%= tag.label class: 'form-check-label' do %>
+                  <%= tag.check_box class: 'form-check-input' %>
+                  <%= tag.text %>
+                <% end %>
+              </div>
+            <% end %>
+          </td>
         </tr>
         
         <tr>
           <td><%= f.label "評価" %></td>
-          <td></td>
+          <td>
+            <%= f.radio_button :evaluation, '1点' %>
+            <%= f.label :evaluation, '1点', value: 1 %>
+            <%= f.radio_button :evaluation, '2点' %>
+            <%= f.label :evaluation, '2点', value: 2 %>
+            <%= f.radio_button :evaluation, '3点' %>
+            <%= f.label :evaluation, '3点', value: 3 %>
+            <%= f.radio_button :evaluation, '4点' %>
+            <%= f.label :evaluation, '4点', value: 4 %>
+            <%= f.radio_button :evaluation, '5点' %>
+            <%= f.label :evaluation, '5点', value: 5 %>
+          </td>
         </tr>
         
         <tr>
           <td><%= f.label :review_content, "コメント内容" %></td>
-          <td><%= f.text_area :review_content, autofocus: true, size: "30x20" %></td>
+          <td><%= f.text_area :review_content, autofocus: true, size: "30x10" %></td>
         </tr>
         
         <tr>
           <td></td>
           <td><%= f.submit "変更を保存", class: "btn btn-success" %></td>
         </tr>
-      </table>
+      
       <% end %>
+      </table>
       
     </div>
   </div>

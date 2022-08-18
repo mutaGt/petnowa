@@ -8,7 +8,7 @@ class Public::CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.member_id = current_member.id
     @comment.save
-    redirect_to review_path(@comment)
+    redirect_to reviews_path
   end
   
   def edit

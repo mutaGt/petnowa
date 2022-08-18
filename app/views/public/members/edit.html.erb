@@ -1,7 +1,7 @@
 <div class='container mt-3'>
   <h3>編集画面</h3>
   <div class='row pl-5 ml-5'>
-    <%= form_with model: @member, url: members_information_path(@member.id), method: :patch do |f| %>
+    <%= form_with model: @member, url: edit_member_path(@member.id), method: :patch do |f| %>
     <div class="form-group row">
       <div class="col-8 text">
         <%= f.label :image, "アイコン" %>

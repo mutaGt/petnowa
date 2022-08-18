@@ -13,18 +13,33 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'public/homes#top'
   scope module: :public do
-    get '/members/my_page' => 'members#show'
-    get '/members/reviews' => 'members#index'
-    get '/members/information/edit' => 'members#edit'
-    patch '/members/information' => 'members#update'
+    resources :members do
+      get '/my_page' => 'members#show'
+      get '/unsubscribe' => 'members#unsubscribe'
+      patch '/withdraw' => 'members#withdraw'
+    end
+    
+    resources :reviews do
+      collection do
+        get 'search'
+      end
+      resources :comments, only: [:new, :create, :edit, :update, :destroy]
+    end
+
+  
+    
+    # get '/members/reviews' => 'members#index'
+    # delete '/members/reviews/:review_id' => 'reviews#destroy'
+    # get '/members/information/edit' => 'members#edit'
+    # patch '/members/information' => 'members#update'
     #会員の退会確認画面
-    get '/members/unsubscribe' => 'members#unsubscribe'
+    
     #会員ステータスの更新
-    patch '/members/withdraw' => 'members#withdraw'
-    get '/reviews/search' => 'reviews#search'
+    
+    # get '/reviews/search' => 'reviews#search'
     #↑非同期を導入するなら必要
-    resources :comments, only: [:new, :create, :edit, :update, :destroy]
-    resources :reviews
+    
+    # resources :reviews
   end
   
   namespace :admin do

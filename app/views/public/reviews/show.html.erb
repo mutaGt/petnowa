@@ -1,55 +1,71 @@
-<h1>レビューの詳細画面</h1>
 <div class="container">
   <div class="row mt-3">
     <div class="col">
       <h3>レビュー詳細</h3>
-        <table style="border:none;">
-        
-          <tr>
-            <td><%= image_tag @review.member.image, size: "50x50" %></td>
-            <td><%= @review.member.name %></td>
-            <td><%= @review.product_name %></td>
-            <td><%= @review.title %></td>
-            <% review.tags.each do |tag| %>
-            <td><%= tag.name %></td>
-            <% end %>
-          </tr>
-          
-          <tr>
-            <td><%= @review.evaluation %></td>
-            <td><%= @review.review_content %></td>
-            <td><% if @review.member == current_member %></td>
-            <td><%= link_to "編集", edit_review_path(@review.id) %></td>
-            <td><%= link_to "削除", review_path(@review.id), method: :delete %></td>
-            <% else %>
-            <td></td>
-            <td></td>
-            <% end %>
-          </tr>
-          
-          <tr>  
-              <%= link_to "コメント", new_comment_path %>
-          </tr>
+      <div class="card">
+        <div class="card-body">
+          <table class="table border:none;">
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th>商品名</th>
+                <th>タイトル</th>
+                <th>タグ</th>
+                <th>評価</th>
+                <th>レビュー内容</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+              <tr>
+                <td><%= image_tag @review.member.image, size: "50x50" %></td>
+                <td><%= @review.member.name %></td>
+                <td><%= @review.product_name %></td>
+                <td><%= @review.title %></td>
+                <td><% @review.tags.each do |tag| %>
+                  ・<%= tag.name %><br>
+                <% end %></td>
+                <td><%= @review.evaluation %>点</td>
+                <td><%= @review.review_content %></td>
+                <% if @review.member == current_member %>
+                <td><%= link_to "編集", edit_review_path(@review.id), class: "btn btn-success btn-sm" %></td>
+                <td><%= link_to "削除", review_path(@review.id), class: "btn btn-danger btn-sm",  method: :delete %></td>
+                <% else %>
+                <td></td>
+                <td></td>
+                <% end %>
+                <td><%= link_to "コメント", new_review_comment_path(@review.id) %></td>
+              </tr>
+                
+            </thead>
+                
+            <tbody>
+              <% @comments.each do |comment| %>
               
-          <% @comments.each do |comment| %>
-          <tr>
-            <td><%= image_tag comment.member.image, size: "50x50" %></td>
-            <td><%= comment.member.name %></td>
-          </tr>
-              
-          <tr>
-            <td><%= comment_content %></td>
-            <td><% if comment.user == current_user %></td>
-            <td><%= link_to "編集", edit_comment_path(comment.id) %></td>
-            <td><%= link_to "削除", comment_path(comment.id), method: :delete %></td>
-            <% else %>
-            <td></td>
-            <td></td>
-            <% end %>
-          </tr>
-          <% end %>
-        </table>
-        
+              <tr>
+                <th></th>
+                <th></th>
+                <th>コメント</th>
+                <th></th>
+                <th></th>
+              </tr>
+              <tr>
+                <td><%= image_tag comment.member.image, size: "50x50" %></td>
+                <td><%= comment.member.name %></td>
+                <td><%= comment_content %></td>
+                <% if comment.user == current_user %>
+                <td><%= link_to "編集", edit_comment_path(comment.id) %></td>
+                <td><%= link_to "削除", comment_path(comment.id), method: :delete %></td>
+                <% else %>
+                <td></td>
+                <td></td>
+                <% end %>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
