@@ -17,6 +17,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       get '/my_page' => 'members#show'
       get '/unsubscribe' => 'members#unsubscribe'
       patch '/withdraw' => 'members#withdraw'
+      get 'password_edit' => 'members#password_edit'
+      patch 'password_update' => 'members#password_update'
     end
     
     resources :reviews do
@@ -26,20 +28,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       resources :comments, only: [:new, :create, :edit, :update, :destroy]
     end
 
-  
-    
-    # get '/members/reviews' => 'members#index'
-    # delete '/members/reviews/:review_id' => 'reviews#destroy'
-    # get '/members/information/edit' => 'members#edit'
-    # patch '/members/information' => 'members#update'
-    #会員の退会確認画面
-    
-    #会員ステータスの更新
-    
-    # get '/reviews/search' => 'reviews#search'
-    #↑非同期を導入するなら必要
-    
-    # resources :reviews
   end
   
   namespace :admin do

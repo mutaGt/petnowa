@@ -5,18 +5,24 @@
       <% @reviews.each do |review| %>
       <div class="card">
         <div class="card-body">
-          <table class="table">
+          <table class="table border:none;">
             <tr>
-            <td><%= image_tag review.member.image, size: "50x50" %></td>
-            <td><%= review.member.name %></td>
-            <td><%= review.product_name %></td>
-            <td><%= review.title %></td>
+              <th></th>
+              <th></th>
+              <th>商品名</th>
+              <th>タイトル</th>
+              <th>評価</th>
+              <th>レビュー内容</th>
+              <th></th>
             </tr>
-            
             <tr>
-              <td><%= review.evaluation %></td>
+              <td><%= image_tag review.member.image, size: "50x50" %></td>
+              <td><%= review.member.name %></td>
+              <td><%= review.product_name %></td>
+              <td><%= review.title %></td>
+              <td><%= review.evaluation %>点</td>
               <td><%= review.review_content %></td>
-              <td><%= link_to "削除", review_path(review.id), method: :delete %></td>
+              <td><%= link_to "削除", admin_member_path(review.id), class: "btn btn-danger btn-sm", method: :delete %></td>
             </tr>
           </table>
         </div>

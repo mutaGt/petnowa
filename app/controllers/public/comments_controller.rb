@@ -7,8 +7,9 @@ class Public::CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.member_id = current_member.id
+    @comment.review_id = params[:review_id]
     @comment.save
-    redirect_to reviews_path
+    redirect_to review_path(@comment.review.id)
   end
   
   def edit
@@ -18,7 +19,7 @@ class Public::CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     @comment.update(comment_params)
-    redirect_to review_path(@comment)
+    redirect_to review_path(@comment.review.id)
   end
   
   private

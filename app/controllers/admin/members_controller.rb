@@ -6,7 +6,7 @@ class Admin::MembersController < ApplicationController
   
   def show
     @member = Member.find(params[:id])
-    @reviews = @memver.reviews
+    @reviews = @member.reviews
   end
   
   def update
@@ -16,9 +16,9 @@ class Admin::MembersController < ApplicationController
   end
   
   def destroy
-    @review = Member.find(params[:id])
+    @review = Review.find(params[:id])
     @review.destroy
-
+    redirect_to admin_reviews_path
   end
   
   private

@@ -3,7 +3,7 @@
     <div class="col">
       <%= form_with model: @tag, url: admin_tags_path, method: :post do |f| %>
       <table style="border:none;">
-        <h3 class="mt-3">タグ管理</h3>
+      <h3 class="mt-3">タグ管理</h3>
         <thead>
           <tr>
             <td><%= f.label :name, "タグ名", class: "mr-3" %></td>
@@ -16,7 +16,7 @@
         <tbody>
           <tr>
             <td><%= tag.name %></td>
-            <td><%= link_to "削除", admin_tag_path(tag), method: :delete %></td>
+            <td><%= link_to "削除", admin_tag_path(tag), class: "btn btn-danger btn-sm", method: :delete %></td>
           </tr>
         </tbody>
         <% end %>

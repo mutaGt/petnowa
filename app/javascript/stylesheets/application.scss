@@ -2,6 +2,13 @@
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 
+.navbar-light {
+  background-color: #FFEEFF ;
+}
+.navbar-light .navbar-brand {
+  color: #FF5192;
+}
+
 .search-li {
   display: inline-block;
   text-align: center;

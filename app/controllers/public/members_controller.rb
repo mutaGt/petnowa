@@ -15,7 +15,17 @@ class Public::MembersController < ApplicationController
   def update
     @member = current_member
     @member.update(member_params)
-    redirect_to members_my_page_path
+    redirect_to member_my_page_path(@member)
+  end
+  
+  def password_edit
+    @member = current_member
+  end
+  
+  def password_update
+    @member = current_member
+    @member.update(member_password_params)
+    redirect_to member_my_page_path(@member)
   end
   
   def destroy
@@ -37,6 +47,10 @@ class Public::MembersController < ApplicationController
   
   private
   def member_params
-    params.require(:member).permit(:name, :email, :password, :image)  
+    params.require(:member).permit(:name, :email, :image)  
+  end
+  
+  def member_password_params
+    params.require(:member).permit(:password)  
   end
 end

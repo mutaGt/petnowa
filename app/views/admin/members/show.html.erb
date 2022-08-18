@@ -3,25 +3,43 @@
     <div class="col">
       <h3 class="mt-3">会員詳細</h3>
       <div>会員ステータス</div>
-      <div><%= member.is_deleted %></div>
+      <% if @member.is_deleted == false %>
+        有効
+      <% else %>
+        退会
+      <% end %>
+      <%= form_with model: @member, url: admin_member_path, local: true do |f| %>
+        <%= f.radio_button :is_deleted, :true %>
+        <%= f.label :is_deleted, "退会" %>
+        <%= f.radio_button :is_deleted, :false %>
+        <%= f.label :is_deleted, "有効" %>
+        <%= f.submit "変更を保存" , class: "btn btn-info btn-sm" %>
+      <% end %>
+
       
       <% @reviews.each do |review| %>
       <div class="card">
         <div class="card-body">
-          <div class="row">
-            <div class="col">
-              <%= image_tag review.member.image, size: "50x50" %>
-              <%= review.member.name %>
-              <%= review.product_name %>
-              <%= review.title %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <%= review.evaluation %>
-              <%= review.review_content %>
-            </div>
-          </div>
+          <table class="table border:none;">
+            <tr>
+              <th></th>
+              <th></th>
+              <th>商品名</th>
+              <th>タイトル</th>
+              <th>評価</th>
+              <th>レビュー内容</th>
+              <th></th>
+            </tr>
+            <tr>
+              <td><%= image_tag review.member.image, size: "50x50" %></td>
+              <td><%= review.member.name %></td>
+              <td><%= review.product_name %></td>
+              <td><%= review.title %></td>
+              <td><%= review.evaluation %>点</td>
+              <td><%= review.review_content %></td>
+              <td><%= link_to "削除", admin_member_path(review.id), class: "btn btn-danger btn-sm",  method: :delete %></td>
+            </tr>
+          </table>  
         </div>
       </div>
       <% end %>

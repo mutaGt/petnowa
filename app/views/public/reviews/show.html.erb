@@ -53,10 +53,10 @@
               <tr>
                 <td><%= image_tag comment.member.image, size: "50x50" %></td>
                 <td><%= comment.member.name %></td>
-                <td><%= comment_content %></td>
-                <% if comment.user == current_user %>
-                <td><%= link_to "編集", edit_comment_path(comment.id) %></td>
-                <td><%= link_to "削除", comment_path(comment.id), method: :delete %></td>
+                <td><%= comment.comment_content %></td>
+                <% if comment.member == current_member %>
+                <td><%= link_to "編集", edit_review_comment_path(comment.id) %></td>
+                <td><%= link_to "削除", review_comment_path(comment.id), method: :delete %></td>
                 <% else %>
                 <td></td>
                 <td></td>
