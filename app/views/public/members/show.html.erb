@@ -6,11 +6,12 @@
     <div class="col-md-8">
       <table class="table table-hover table-inverse">
         <tr>
-        <% if @member.image.attached? %>
-          <div class='row'>
-            <div class='col-pl-2'>
-              <td>アイコン</td>
-              <td><%= image_tag @member.image, size: "90x90" %></td>
+          <% if @member.image.attached? %>
+            <div class='row'>
+              <div class='col-pl-2'>
+                <td>アイコン</td>
+                <td><%= image_tag @member.image, size: "90x90" %></td>
+              </div>
             </div>
           <% end %>
         </tr>
@@ -23,21 +24,35 @@
           <td><%= @member.email %></td>
         </tr>
       </table>
+      
       <div class="row">
-        <h5 class="mt-3">登録情報</h5>
+        <% if @member.name != "guestuser" %>
+          <h5 class="mt-3">登録情報</h5>
+          <div class="col mt-3 mb-2">
+            <%= link_to "編集する", edit_member_path(current_member), class: "btn btn-outline-success" %>
+          </div>
+        <% end %>
+        <h5 class="mt-3">パスワード変更</h5>
         <div class="col mt-3 mb-2">
-         <%= link_to "編集する",  edit_member_path(current_member) , class: "btn btn-outline-success" %>
+          <%= link_to "パスワード変更", member_password_edit_path(current_member), class: "btn btn-outline-success" %>
         </div>
       </div>
     </div>     
   </div>
   <div class="row">
-      <h5>過去の投稿</h5>
-      <div class="col-3">
-        <%= link_to "一覧を見る", members_path(current_member) , class: "btn btn-outline-warning"%>
-      </div>
-      <div>
-        <%= link_to "退会", member_unsubscribe_path(current_member),class: "btn btn-outline-warning" %>
-      </div>
+    <h5>過去の投稿</h5>
+    <div class="col-3">
+      <%= link_to "一覧を見る", members_path(current_member) , class: "btn btn-outline-info"%>
     </div>
+  </div>
+  <div class="row">
+    <% if @member.name != "guestuser" %>
+      <h5 class="mt-3">退会はこちら</h5>
+      <div class="col-3">
+        <div>
+          <%= link_to "退会", member_unsubscribe_path(current_member),class: "btn btn-outline-danger mt-2" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

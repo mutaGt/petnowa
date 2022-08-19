@@ -22,6 +22,12 @@ class Public::CommentsController < ApplicationController
     redirect_to review_path(@comment.review.id)
   end
   
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to reviews_path
+  end
+  
   private
   
   def comment_params

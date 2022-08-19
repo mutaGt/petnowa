@@ -54,7 +54,7 @@ class Public::ReviewsController < ApplicationController
   
   def show
     @review = Review.find(params[:id])
-    @comments = Comment.all
+    @comments = @review.comments
   end
   
   def edit

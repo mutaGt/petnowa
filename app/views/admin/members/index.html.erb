@@ -14,7 +14,13 @@
           <td><%= member.id %></td>
           <td><%= link_to member.name, admin_member_path(member.id) %></td>
           <td><%= member.email %></td>
-          <td><%= member.is_deleted %></td>
+          <td>
+            <% if member.is_deleted == false %>
+              有効
+            <% else %>
+              退会
+            <% end %>
+          </td>
         </tr>
         <% end %>
       </table>
