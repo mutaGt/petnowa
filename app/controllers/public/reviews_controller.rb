@@ -17,6 +17,9 @@ class Public::ReviewsController < ApplicationController
   
   def index
     @reviews = Review.all
+    @reviews.each do |review|
+      review.set_image_url
+    end
     
     if params[:tag_ids]
       @reviews = []
@@ -57,22 +60,23 @@ class Public::ReviewsController < ApplicationController
   
   def show
     @review = Review.find(params[:id])
+    @review.set_image_url
     @comments = @review.comments
   end
   
   def edit
     @review = Review.find(params[:id])
     unless @review.member == current_member
-     redirect_to reviews_path
+      redirect_to reviews_path
     end
   end
   
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)
-    redirect_to reviews_path(@review)
+      redirect_to review_path(@review)
     else
-    render :edit
+      render :edit
     end
   end
   
@@ -82,11 +86,10 @@ class Public::ReviewsController < ApplicationController
     redirect_to reviews_path
   end
   
+  private
   
-private
-
-def review_params
-  params.require(:review).permit(:product_name, :title, :evaluation, :review_content, :tag_ids => [])
-end
+  def review_params
+    params.require(:review).permit(:product_name, :title, :evaluation, :review_content, :tag_ids => [])
+  end
   
 end

@@ -1,37 +1,24 @@
 class Public::MembersController < ApplicationController
   before_action :ensure_guest_member, only: [:edit]
   
-  def index
+  def reviews
     @reviews = current_member.reviews
   end
   
-  def show
+  def my_page
     @member = current_member
-  end
-  
-  def edit
-    @member = current_member
-  end
-  
-  def update
-    @member = current_member
-    if @member.update(member_params)
-      if params[:member][:password] && params[:member][:password_confirmation]
-        sign_in(@member, bypass: true)
-      end
-    redirect_to member_my_page_path(@member)
-    end
   end
   
   def password_edit
     @member = current_member
   end
   
-  
-  def destroy
-    @review = Review.find(params[:id])
-    @review.destroy
-    redirect_to members_path
+  def password_update
+    @member = current_member
+    if @member.update(member_params)
+      sign_in(@member, bypass: true)
+      redirect_to my_page_members_path
+    end
   end
   
   def unsubscribe
@@ -49,13 +36,13 @@ class Public::MembersController < ApplicationController
   private
   
   def member_params
-    params.require(:member).permit(:name, :email, :image, :password, :password_confirmation, :reset_password_token)  
+    params.require(:member).permit(:password, :password_confirmation)  
   end
   
    def ensure_guest_member
     @member = Member.find(params[:id])
-    if @member.name == "guestuser"
-      redirect_to member_path(current_member) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    if @member.guest?
+      redirect_to my_page_members_path , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
    end  
   

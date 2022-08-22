@@ -5,7 +5,7 @@
         <ul class="navbar-nav">
         <% if member_signed_in? %>
           <li class="nav-item">
-            <%= link_to member_my_page_path(current_member), class: 'nav-link text-dark' do %>
+            <%= link_to my_page_members_path, class: 'nav-link text-dark' do %>
               マイページ
             <% end %>
           </li>

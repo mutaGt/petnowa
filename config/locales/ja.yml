@@ -13,3 +13,9 @@ ja:
         email: メールアドレス
         password: パスワード(6文字以上)
         password_confirmation: パスワード確認用
+      member:
+        image: アイコン
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード(確認用)

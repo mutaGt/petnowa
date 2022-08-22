@@ -17,18 +17,24 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'public/homes#top'
   scope module: :public do
-    resources :members do
-      get '/my_page' => 'members#show'
-      get '/unsubscribe' => 'members#unsubscribe'
-      patch '/withdraw' => 'members#withdraw'
-      get 'password_edit' => 'members#password_edit'
-      patch 'password_update' => 'members#password_update'
+    resources :members, only: [] do
+      collection do
+        get :reviews
+        get :my_page
+        get :edit
+        patch :update
+        get :password_edit
+        patch :password_update
+        get :unsubscribe
+        patch :withdraw
+      end
     end
     
     resources :reviews do
       collection do
-        get 'search'
+        get :search
       end
+      
       resources :comments, only: [:new, :create, :edit, :update, :destroy]
     end
 

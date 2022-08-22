@@ -20,7 +20,10 @@
             <tr>
               <td><%= image_tag @review.member.image, size: "50x50" %></td>
               <td><%= @review.member.name %></td>
-              <td><%= @review.product_name %></td>
+              <td><%= @review.product_name %>
+              <%= image_tag @review.image_url, size: "50x50" %>
+              
+              </td>
               <td><%= @review.title %></td>
               <td><% @review.tags.each do |tag| %>
                 ・<%= tag.name %><br>

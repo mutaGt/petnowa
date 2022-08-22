@@ -87,6 +87,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.10.2)
+      devise (>= 4.8.0)
     digest (3.1.0)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
@@ -101,6 +103,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    json (2.6.2)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.2)
@@ -193,6 +196,8 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
     rake (13.0.6)
+    rakuten_web_service (1.13.1)
+      json (~> 2.3)
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -268,6 +273,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
+  devise-i18n
   dotenv-rails
   jbuilder (~> 2.7)
   kaminari (~> 1.2.1)
@@ -281,6 +287,7 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.6, >= 6.1.6.1)
   rails-i18n
+  rakuten_web_service
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
   spring

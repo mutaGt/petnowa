@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+
+.navbar-light {
+  background-color: #FFEEFF !important;
+}
+
+.navbar-light .navbar-brand {
+  color: #FF5192 !important;
+}
+
+.search-li {
+  display: inline-block;
+  text-align: center;
+  padding-left: 2%;
+}
+
+.main-visual {
+  background-image: url("dog.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.vh100 {
+  min-height: 100vh;
+}

@@ -1,19 +1,26 @@
-  <div class="d-flex justify-content-end mt-5 mr-5">
-    <div class="card mt-5 mr-5">
-      <div class="card-body">
-        <div class="text-center">
-          <p>ペットの輪はペット関連の商品レビューを投稿したり、閲覧できるサービスです。</p>
-          <p>気になる商品を実際に使用した方の生の声を知りたい場合は<br>
-          一度サイトを覗いてみてください</p>
-        </div>
-        
-        <%= link_to 'ゲストログイン（閲覧用）', members_guest_sign_in_path, class: "btn btn-outline-secondary btn-sm btn-block mb-1 sign_in", method: :post %>
-  
-        <%= link_to '新規登録', new_member_registration_path, class: "btn btn-outline-success btn-sm btn-block mb-1" %>
-  
-        <%= link_to 'ログイン', new_member_session_path, class: "btn btn-outline-info btn-sm btn-block" %>
-  
-        管理者は<%= link_to "こちら", new_admin_session_path %>からログイン
-      </div>  
-    </div>
-  </div> 
+ <div class="container-fluid main-visual">
+   <div class="row"> 
+    <div class="col-12 d-flex align-items-center vh100">
+      <div class="card mx-auto">
+        <div class="card-body">
+          <div class="text-center">
+            <p>ペットの輪はペット関連の商品レビューを投稿したり、閲覧できるサービスです。</p>
+            <p>気になる商品を実際に使用した方の生の声を知りたい場合は<br>
+            一度サイトを覗いてみてください</p>
+          </div>
+          
+          <%= link_to 'ゲストログイン（閲覧用）', members_guest_sign_in_path, class: "btn btn-outline-secondary btn-sm btn-block mb-1 sign_in", method: :post %>
+    
+          <%= link_to '新規登録', new_member_registration_path, class: "btn btn-outline-success btn-sm btn-block mb-1" %>
+    
+          <%= link_to 'ログイン', new_member_session_path, class: "btn btn-outline-info btn-sm btn-block" %>
+    
+          管理者は<%= link_to "こちら", new_admin_session_path %>からログイン
+          <!-- Rakuten Web Services Attribution Snippet FROM HERE -->
+          <a href="https://webservice.rakuten.co.jp/" target="_blank"><img src="https://webservice.rakuten.co.jp/img/credit/200709/credit_22121.gif" border="0" alt="Rakuten Web Service Center" title="Rakuten Web Service Center" width="221" height="21"/></a>
+          <!-- Rakuten Web Services Attribution Snippet TO HERE -->
+        </div>  
+      </div>
+    </div>  
+  </div>
+</div>

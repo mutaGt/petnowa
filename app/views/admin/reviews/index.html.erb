@@ -18,7 +18,10 @@
             <tr>
               <td><%= image_tag review.member.image, size: "50x50" %></td>
               <td><%= review.member.name %></td>
-              <td><%= review.product_name %></td>
+              <td><%= review.product_name %>
+              <ul id="rakutenItem"></ul>
+              
+              </td>
               <td><%= review.title %></td>
               <td><%= review.evaluation %>点</td>
               <td><%= review.review_content %></td>

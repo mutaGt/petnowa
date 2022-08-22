@@ -58,6 +58,7 @@ gem 'kaminari','~> 1.2.1'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+gem 'devise-i18n'
 
 gem 'rails-i18n'
 
@@ -70,3 +71,5 @@ end
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
+
+gem 'rakuten_web_service'

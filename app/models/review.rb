@@ -10,4 +10,10 @@ class Review < ApplicationRecord
   validates :title, presence: true
   validates :review_content, presence: true
 
+  attribute :image_url, :string
+  
+  def set_image_url
+    items = RakutenWebService::Ichiba::Item.search(keyword: product_name)
+    self.image_url = items.first["mediumImageUrls"][0]
+  end
 end
