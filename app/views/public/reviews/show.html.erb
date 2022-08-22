@@ -37,7 +37,7 @@
               <% if @review.member == current_member %>
               <td></td>
               <% else %>
-              <td><%= link_to "コメント", new_review_comment_path(@review.id) %></td>
+              <td><%= link_to "コメント投稿", new_review_comment_path(@review.id) %></td>
               <% end %>
             </tr>
           </table>
@@ -45,6 +45,7 @@
       </div>
 
           <table class="table border:none;">
+            <% if  @comments.present? %>
             <tr>
               <th></th>
               <th></th>
@@ -52,6 +53,8 @@
               <th></th>
               <th></th>
             </tr>
+            <% else %>
+            <% end %>
             <% @comments.each do |comment| %>
             <tr>
               <td><%= image_tag comment.member.image, size: "50x50" %></td>

@@ -8,8 +8,11 @@ class Public::CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.member_id = current_member.id
     @comment.review_id = params[:review_id]
-    @comment.save
+    if @comment.save
     redirect_to review_path(@comment.review.id)
+    else
+    render :new
+    end
   end
   
   def edit

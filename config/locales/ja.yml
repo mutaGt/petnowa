@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    attributes:
+      review:
+        product_name: 商品名
+        title: タイトル
+        review_content: レビュー内容
+      comment:
+        comment_content: コメント内容
+      application_record:
+        image: アイコン
+        name: ユーザーネーム
+        email: メールアドレス
+        password: パスワード(6文字以上)
+        password_confirmation: パスワード確認用

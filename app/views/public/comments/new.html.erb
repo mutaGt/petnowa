@@ -3,13 +3,21 @@
     <div class="col">
       <%= form_with model: @comment, url: review_comments_path, method: :post do |f| %>
       <table style="border:none;">
-        <h3 class="mt-3">コメント入力</h3>
+        <h3 class="mt-3">コメント投稿</h3>
+        <% if @comment.errors.any? %>
+          <%= @comment.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @comment.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
         <tr>
-          <td><%= f.label :comment_content, "コメント", class: "col-12" %></td>
+          <td><%= f.label :comment_content, "コメント入力はこちら", class: "col-12" %></td>
         </tr>
         
         <tr>
-          <td><%= f.text_area :comment_content %></td>
+          <td><%= f.text_area :comment_content, size: "30x5" %></td>
         </tr>
         
         <tr>
