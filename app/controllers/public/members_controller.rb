@@ -3,6 +3,9 @@ class Public::MembersController < ApplicationController
   
   def reviews
     @reviews = current_member.reviews
+    @reviews.each do |review|
+      review.set_image_url
+    end
   end
   
   def my_page
@@ -18,6 +21,8 @@ class Public::MembersController < ApplicationController
     if @member.update(member_params)
       sign_in(@member, bypass: true)
       redirect_to my_page_members_path
+    else
+      render :password_edit
     end
   end
   

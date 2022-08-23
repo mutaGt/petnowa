@@ -21,7 +21,7 @@
               <td><%= image_tag @review.member.image, size: "50x50" %></td>
               <td><%= @review.member.name %></td>
               <td><%= @review.product_name %>
-              <%= image_tag @review.image_url, size: "50x50" %>
+              <%= image_tag @review.image_url, size: "85x85" %>
               
               </td>
               <td><%= @review.title %></td>
@@ -73,6 +73,9 @@
             </tr>
           <% end %>
           </table>
+          <div class="row justify-content-center">
+            <%#= paginate @comments %>
+          </div>
         </div>
       </div>
     </div>

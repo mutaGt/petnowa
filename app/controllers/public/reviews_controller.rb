@@ -16,7 +16,7 @@ class Public::ReviewsController < ApplicationController
   end
   
   def index
-    @reviews = Review.all
+    @reviews = Review.page(params[:page])
     @reviews.each do |review|
       review.set_image_url
     end
@@ -35,6 +35,7 @@ class Public::ReviewsController < ApplicationController
   
   #  rails map{|k, v| v == 1 ? k : nil}.compact 35~40行目をこれに置き換える事も出来る
   def search
+      
     # チェックボックスでチェックしたtag_idを取得
     #{"1"=>"1", "2"=>"0", "3"=>"1", "4"=>"0", "5"=>"0"}
     @tag_ids = params[:tag_ids]
@@ -44,18 +45,30 @@ class Public::ReviewsController < ApplicationController
         tag_ids << check.to_i
       end
     end
+    @word = params[:word]
+    if @tag_ids.present? && params[:word].present?
+      
     # tag_ids = [1, 3]
 
-    # タイトルもしくは本文にwordで設定された文字が含まれていれば
-    @reviews = Review.includes(:tags).where("title LIKE ? OR review_content LIKE ?", "%#{params[:word]}%", "%#{params[:word]}%")
-    # WHERE title LIKE '%params[:word]%' OR review_content LIKE '%params[:word]%'
-
-    unless tag_ids.empty?
-      # チェックが一つでもされていれば検索条件にタグIDを追加する
-      @reviews = @reviews.where(tags: {id: tag_ids})
+    # 商品名、タイトルもしくは本文にwordで設定された文字が含まれていれば
+      @reviews = Review.includes(:tags).where("product_name LIKE ? OR title LIKE ? OR review_content LIKE ?", "%#{params[:word]}%", "%#{params[:word]}%", "%#{params[:word]}%")
+      # WHERE title LIKE '%params[:word]%' OR review_content LIKE '%params[:word]%'
+  
+      unless tag_ids.empty?
+        # チェックが一つでもされていれば検索条件にタグIDを追加する
+        @reviews = @reviews.where(tags: {id: tag_ids})
+      end
+      @reviews.each do |review|
+        review.set_image_url
+      end
+    else
+      redirect_to request.referer, alert: "入力または選択してください"
     end
-    @reviews_all = Review.all
+    
+    # @reviews_all = Review.all
     # @review_page = Review.page(params[:page])
+    
+    
   end
   
   def show

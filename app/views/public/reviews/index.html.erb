@@ -30,6 +30,7 @@
                 <td><%= image_tag review.member.image, size: "50x50" %></td>
                 <td><%= review.member.name %></td>
                 <td><%= review.product_name %>
+                <!--楽天APIで持ってきた画像を表示↓-->
                 <%= image_tag review.image_url, size: "85x85" %>
                 <td><%= review.title %></td>
                 <td><% review.tags.each do |tag| %>
@@ -43,7 +44,9 @@
           </div>
         </div>
       <% end %>
-      
+      <div class="row justify-content-center">
+      <%= paginate @reviews %>
+      </div>
     </div>
   </div>
 </div>

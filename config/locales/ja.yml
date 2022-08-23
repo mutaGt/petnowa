@@ -4,6 +4,8 @@ ja:
       review:
         product_name: 商品名
         title: タイトル
+        tag_ids: タグ
+        evaluation: 評価
         review_content: レビュー内容
       comment:
         comment_content: コメント内容
