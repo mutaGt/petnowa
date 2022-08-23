@@ -3,9 +3,6 @@ class Public::MembersController < ApplicationController
   
   def reviews
     @reviews = current_member.reviews
-    @reviews.each do |review|
-      review.set_image_url
-    end
   end
   
   def my_page

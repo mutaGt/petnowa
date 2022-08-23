@@ -7,9 +7,6 @@ class Admin::MembersController < ApplicationController
   def show
     @member = Member.find(params[:id])
     @reviews = @member.reviews
-    @reviews.each do |review|
-      review.set_image_url
-    end
   end
   
   def update

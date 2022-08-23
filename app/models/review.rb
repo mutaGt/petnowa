@@ -17,7 +17,9 @@ class Review < ApplicationRecord
     length: { maximum: 500 }
   validate :validate_product_name 
 
-  attribute :image_url, :string
+  before_save do #保存の直前に楽天APIが叩かれる(新規作成と編集時)
+    set_image_url
+  end
   
   def set_image_url
     items = RakutenWebService::Ichiba::Item.search(keyword: product_name.gsub(/[[:space:]]+/, "")) #スペースを除いて検索する(空文字に置き換えてる＝スペースは削除される)

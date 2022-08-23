@@ -17,19 +17,7 @@ class Public::ReviewsController < ApplicationController
   
   def index
     @reviews = Review.page(params[:page])
-    @reviews.each do |review|
-      review.set_image_url
-    end
-    
-    if params[:tag_ids]
-      @reviews = []
-      params[:tag_ids].each do |key, value|
-        if value == "1"
-          review_tags = Tag.find_by(name: key).reviews
-          @reviews = @reviews.empty? ? review_tags : @reviews & review_tags
-        end
-      end
-    end
+    @reviews = @reviews.order(created_at: :desc)
   end
   
   
@@ -46,34 +34,26 @@ class Public::ReviewsController < ApplicationController
       end
     end
     @word = params[:word]
-    if @tag_ids.present? && params[:word].present?
+    if @tag_ids.present? || params[:word].present?
       
     # tag_ids = [1, 3]
 
     # 商品名、タイトルもしくは本文にwordで設定された文字が含まれていれば
-      @reviews = Review.includes(:tags).where("product_name LIKE ? OR title LIKE ? OR review_content LIKE ?", "%#{params[:word]}%", "%#{params[:word]}%", "%#{params[:word]}%")
+      @reviews = Review.joins(:tags).where("product_name LIKE ? OR title LIKE ? OR review_content LIKE ?", "%#{params[:word]}%", "%#{params[:word]}%", "%#{params[:word]}%")
       # WHERE title LIKE '%params[:word]%' OR review_content LIKE '%params[:word]%'
   
-      unless tag_ids.empty?
-        # チェックが一つでもされていれば検索条件にタグIDを追加する
-        @reviews = @reviews.where(tags: {id: tag_ids})
+      unless tag_ids.empty? # チェックが一つでもされていれば検索条件にタグIDを追加する
+        @reviews = @reviews.where(tags: { id: tag_ids }).group(:id).having('count(*) = ?', tag_ids.size) #絞り込み(3つタグにチェックを入れたら、3つタグがついているものだけ絞り込む)
       end
-      @reviews.each do |review|
-        review.set_image_url
-      end
+      @reviews = @reviews.order(created_at: :desc) #並び替えorder=順序 created_at=作成日時 desc=降順(=最新準) asc=昇順(=1.2.3...) ※今回はset_image_urlより上に記述する
     else
       redirect_to request.referer, alert: "入力または選択してください"
     end
-    
-    # @reviews_all = Review.all
-    # @review_page = Review.page(params[:page])
-    
     
   end
   
   def show
     @review = Review.find(params[:id])
-    @review.set_image_url
     @comments = @review.comments
   end
   
