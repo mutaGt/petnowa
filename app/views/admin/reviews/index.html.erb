@@ -16,7 +16,11 @@
               <th></th>
             </tr>
             <tr>
-              <td><%= image_tag review.member.image, size: "50x50" %></td>
+              <%if review.member.image.attached? %>
+                  <td><%= image_tag review.member.image, size: "50x50" %></td>
+                <%else%>
+                  <td><%=image_tag "no_image.jpg", size: "50x50"%></td>
+                <%end%>
               <td><%= review.member.name %></td>
               <td><%= review.product_name %>
               <%= image_tag review.image_url, size: "85x85" %>

@@ -13,6 +13,15 @@
  *= require_tree .
  *= require_self
  */
+ 
+ 
+@font-face {
+  font-family: "JK-Maru-Gothic-M";
+  src: asset_url('/assets/jkmarugo/JK-Maru-Gothic-M.otf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 .navbar-light {
   background-color: #FFEEFF !important;
@@ -22,6 +31,10 @@
   color: #FF5192 !important;
 }
 
+.font {
+  font-family: "JK-Maru-Gothic-M";
+
+}
 
 .search-li {
   display: inline-block;
