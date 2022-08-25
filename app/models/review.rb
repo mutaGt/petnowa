@@ -23,19 +23,10 @@ class Review < ApplicationRecord
   
   def set_image_url
     items = RakutenWebService::Ichiba::Item.search(keyword: product_name.gsub(/[[:space:]]+/, "")) #スペースを除いて検索する(空文字に置き換えてる＝スペースは削除される)
-    item = false
-    items.each do |i|
-      # itemがあれば
-      if i.present?
-        item = true
-        break
-      end
-    end
-    if item
-      # 楽天にあれば持ってきた画像を表示
+    
+    if items.count >= 1 # 検索結果が1件以上あれば
       self.image_url = items.first["mediumImageUrls"][0]
-    else
-      # 楽天になければno_imageを表示
+    else # 検索結果が0件であればno_imageを表示
       self.image_url = "no_image.jpg"
     end
   end

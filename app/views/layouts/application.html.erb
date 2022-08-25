@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <%# top.html.erbの方の編集も忘れないこと %>
     <%= render 'layouts/header' %>
     <% if flash[:notice].present? || notice.present? %>
       <div class="alert alert-success" role="alert">
@@ -23,6 +24,5 @@
       </div>
     <% end %>
     <%= yield %>
-    <%= render 'layouts/footer' %>
   </body>
 </html>

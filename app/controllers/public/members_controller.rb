@@ -1,8 +1,9 @@
 class Public::MembersController < ApplicationController
   before_action :ensure_guest_member, only: [:edit]
+  before_action :find_review, only:[:destroy]
   
   def reviews
-    @reviews = current_member.reviews
+    @reviews = current_member.reviews.order(created_at: :desc).page(params[:page])
   end
   
   def my_page
@@ -41,11 +42,10 @@ class Public::MembersController < ApplicationController
     params.require(:member).permit(:password, :password_confirmation)  
   end
   
-   def ensure_guest_member
+  def ensure_guest_member
     @member = Member.find(params[:id])
     if @member.guest?
-      redirect_to my_page_members_path , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    redirect_to my_page_members_path , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
-   end  
-  
+  end
 end
