@@ -41,11 +41,7 @@
               <td></td>
               <td></td>
               <% end %>
-              <% if @review.member == current_member %>
-              <td></td>
-              <% else %>
               <td><%= link_to "コメント投稿", new_review_comment_path(@review.id) %></td>
-              <% end %>
             </tr>
           </table>
         </div>
