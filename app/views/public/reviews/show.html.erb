@@ -39,7 +39,7 @@
             <td></td>
             <td></td>
             <% end %>
-            <td><%= link_to "コメント投稿", new_review_comment_path(@review.id), class: "btn btn-warning btn-sm" %></td>
+            <td><%= link_to "コメント投稿", new_review_comment_path(@review.id), class: "btn btn-info btn-sm" %></td>
           </tr>
         </table>
       </div>
@@ -66,8 +66,8 @@
         <td><%= comment.member.name %></td>
         <td><%= safe_join(comment.comment_content.split("\n"),tag(:br)) %></td>
         <% if comment.member == current_member %>
-        <td><%= link_to "編集", edit_review_comment_path(comment.review_id,comment.id), class: "btn btn-outline-success" %></td>
-        <td><%= link_to "削除", review_comment_path(comment.review_id,comment.id), class: "btn btn-outline-danger", method: :delete %></td>
+        <td><%= link_to "編集", edit_review_comment_path(comment.review_id,comment.id), class: "btn btn-outline-success btn-sm" %></td>
+        <td><%= link_to "削除", review_comment_path(comment.review_id,comment.id), class: "btn btn-outline-danger btn-sm", method: :delete %></td>
         <% else %>
         <td></td>
         <td></td>
