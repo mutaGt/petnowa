@@ -1,72 +1,77 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="/"><span class="font">ペットの輪</span></a>
-  
-        <ul class="navbar-nav">
-        <% if member_signed_in? %>
-          <li class="nav-item">
-            <%= link_to my_page_members_path, class: 'nav-link text-dark' do %>
-              マイページ
-            <% end %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+      <% if member_signed_in? %>
+        <li class="nav-item">
+          <%= link_to my_page_members_path, class: 'nav-link text-dark' do %>
+            マイページ
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to reviews_path, class: 'nav-link text-dark' do %>
+            検索
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_review_path, class: 'nav-link text-dark' do %>
+            投稿
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to destroy_member_session_path, method: :delete, class: 'nav-link text-dark' do %>
+            ログアウト
+          <% end %>
+        </li>
+        <% elsif admin_signed_in? %>
+        <li class="nav-item">
+          <%= link_to admin_tags_path, class: 'nav-link text-dark' do %>
+          　タグ登録
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_members_path, class: 'nav-link text-dark' do %>
+            会員一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_comments_path, class: 'nav-link text-dark' do %>
+            コメント一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_reviews_path, class: 'nav-link text-dark' do %>
+            レビュー一覧
+          <% end %>
           </li>
-          <li class="nav-item">
-            <%= link_to reviews_path, class: 'nav-link text-dark' do %>
-              検索
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to new_review_path, class: 'nav-link text-dark' do %>
-              投稿
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to destroy_member_session_path, method: :delete, class: 'nav-link text-dark' do %>
-              ログアウト
-            <% end %>
-          </li>
-          <% elsif admin_signed_in? %>
-          <li class="nav-item">
-            <%= link_to admin_tags_path, class: 'nav-link text-dark' do %>
-            　タグ登録
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to admin_members_path, class: 'nav-link text-dark' do %>
-              会員一覧
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to admin_comments_path, class: 'nav-link text-dark' do %>
-              コメント一覧
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to admin_reviews_path, class: 'nav-link text-dark' do %>
-              レビュー一覧
-            <% end %>
-            </li>
-          <li class="nav-item">
-            <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
-              ログアウト
-            <% end %>
-          </li>
-          <% else %>
-          <li class="nav-item">
-            <%= link_to root_path, class: 'nav-link text-dark' do %>
-              トップ
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to new_member_registration_path, class: 'nav-link text-dark' do %>
-              新規登録
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to new_member_session_path, class: 'nav-link text-dark' do %>
-              ログイン
-            <% end %>
-          </li>
-        <% end %>
-        </ul>
+        <li class="nav-item">
+          <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
+            ログアウト
+          <% end %>
+        </li>
+        <% else %>
+        <li class="nav-item">
+          <%= link_to root_path, class: 'nav-link text-dark' do %>
+            トップ
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_member_registration_path, class: 'nav-link text-dark' do %>
+            新規登録
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_member_session_path, class: 'nav-link text-dark' do %>
+            ログイン
+          <% end %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
   </nav>
 </header>
