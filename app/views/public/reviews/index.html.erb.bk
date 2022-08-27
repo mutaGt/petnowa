@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3 class="mt-3">レビュー一覧</h3>
+      <%= form_tag(search_reviews_path, :method => :get) do %>
+        <%= text_field_tag :word %>
+        <%= submit_tag "検索", class: "btn btn-success" %>
+        <ul class="search-ul">
+          <% Tag.all.each do |tag| %>
+            <li class="search-li"><%= check_box :tag_ids, tag.id %><%= tag.name %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      <% @reviews.each do |review| %>
+        <div class="card col-12 mb-3">
+          <div class="card-body">
+            <div class="row">
+            <div class="col-2"></div>
+            <div class="col-2">商品名</div>
+            <div class="col-2">タイトル</div>
+            <div class="col-2">タグ</div>
+            <div class="col-1">評価</div>
+            <div class="col-3">レビュー内容</div>
+            </div>
+            <div class="row">
+            <div class="col-2">
+              <%if review.member.image.attached? %>
+                <%= image_tag review.member.image, size: "50x50" %>
+            <%else%>
+                <%=image_tag "no_image.jpg", size: "50x50"%>
+              <%end%>
+              <%= review.member.name %>
+              </div>
+            <div class="col-2">
+                  <%= image_tag review.image_url, size: "85x85" %>
+                  <%= review.product_name %>
+                </div>
+                <!--楽天APIで持ってきた画像を表示↓-->
+              
+                <div class="col-2"><%= review.title %></div>
+                <div class="col-2"><% review.tags.each do |tag| %>
+                ・<%= tag.name %><br>
+                <% end %></div>
+                              <div class="col-1"><%= review.evaluation %>点</div>
+
+              <div class="col-2">><%= review.review_content %></div>
+              <div class="col-1"><%= link_to "コメント一覧", review_path(review.id) %></div>
+          </div>
+          </div>
+          
+
+        </div>
+      <% end %>
+      <div class="row justify-content-center">
+      <%= paginate @reviews %>
+      </div>
+    </div>
+  </div>
+</div>
