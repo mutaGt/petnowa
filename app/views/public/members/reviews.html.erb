@@ -2,39 +2,36 @@
   <div class='row'>
     <div class='col-12'>
       <h5>過去の投稿</h5>
-        <% @reviews.each do |review| %>
-      
-            <table class="table border:none;">
-              <tr>
-                <th>評価</th>
-                <th>商品名</th>
-                <th>タイトル</th>
-                <th>タグ</th>
-                <th>レビュー内容</th>
-                <th></th>
-                <th></th>
-              </tr>
-              <tr>
-              <td><%= review.evaluation %>点</td>
-              <td><%= review.product_name %>
-              <%= image_tag review.image_url, size: "85x85" %>
-              </td>
-              <td><%= review.title %></td>
-              <td><% review.tags.each do |tag| %>
-                ・<%= tag.name %><br>
-              <% end %></td>
-              <td><%= review.review_content %></td>
-              <td><%= link_to "編集", edit_review_path(review.id), class: "btn btn-success btn-sm" %></td>
-              <td><%= link_to "削除", review_path(review.id, member_review: true), method: :delete, "data-confirm" => "本当に削除しますか？" , class: "btn btn-danger btn-sm" %></td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <% end %>
-        <div class="row justify-content-center">
-          <%= paginate @reviews %>
-        </div>
-
-
+      <% @reviews.each do |review| %>
+      <table class="table border:none;">
+        <tr>
+          <th>評価</th>
+          <th>商品名</th>
+          <th>タイトル</th>
+          <th>タグ</th>
+          <th>レビュー内容</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td><%= review.evaluation %>点</td>
+          <td><%= review.product_name %>
+          <%= image_tag review.image_url, size: "85x85" %>
+          </td>
+          <td><%= review.title %></td>
+          <td><% review.tags.each do |tag| %>
+            ・<%= tag.name %><br>
+          <% end %></td>
+          <td style="width: 20%"><%= safe_join(review.review_content.split("\n"),tag(:br)) %></td>
+          <td><%= link_to "編集", edit_review_path(review.id), class: "btn btn-success btn-sm" %></td>
+          <td><%= link_to "削除", review_path(review.id, member_review: true), method: :delete, "data-confirm" => "本当に削除しますか？" , class: "btn btn-danger btn-sm" %></td>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <%= paginate @reviews %>
+  </div>
 </div>
 

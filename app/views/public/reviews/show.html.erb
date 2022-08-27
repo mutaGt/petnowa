@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mt-3">
-    <div class="col">
+    <div class="col-12">
       <h5>レビュー詳細</h5>
         <table class="table border:none;">
           <tr>
@@ -17,21 +17,21 @@
           </tr>
           <tr>
             <%if @review.member.image.attached? %>
-                <td><%= image_tag @review.member.image, size: "50x50" %></td>
-              <%else%>
-                <td><%=image_tag "no_image.jpg", size: "50x50"%></td>
-              <%end%>
+              <td><%= image_tag @review.member.image, size: "50x50" %></td>
+            <%else%>
+              <td><%=image_tag "no_image.jpg", size: "50x50"%></td>
+            <%end%>
             <td><%= @review.member.name %></td>
             <td><%= @review.product_name %>
             <%= image_tag @review.image_url, size: "85x85" %>
             
             </td>
             <td><%= @review.title %></td>
-            <td><% @review.tags.each do |tag| %>
+            <td style="width: 8%"><% @review.tags.each do |tag| %>
               ・<%= tag.name %><br>
             <% end %></td>
-            <td><%= @review.evaluation %>点</td>
-            <td><%= @review.review_content %></td>
+            <td style="width: 8%"><%= @review.evaluation %>点</td>
+            <td style="width: 15%"><%= safe_join(@review.review_content.split("\n"),tag(:br)) %></td>
             <% if @review.member == current_member %>
             <td><%= link_to "編集", edit_review_path(@review.id), class: "btn btn-success btn-sm" %></td>
             <td><%= link_to "削除", review_path(@review.id), class: "btn btn-danger btn-sm",  method: :delete %></td>
@@ -39,7 +39,7 @@
             <td></td>
             <td></td>
             <% end %>
-            <td><%= link_to "コメント投稿", new_review_comment_path(@review.id) %></td>
+            <td><%= link_to "コメント投稿", new_review_comment_path(@review.id), class: "btn btn-warning btn-sm" %></td>
           </tr>
         </table>
       </div>
@@ -64,7 +64,7 @@
           <td><%=image_tag "no_image.jpg", size: "50x50"%></td>
         <%end%>
         <td><%= comment.member.name %></td>
-        <td><%= comment.comment_content %></td>
+        <td><%= safe_join(comment.comment_content.split("\n"),tag(:br)) %></td>
         <% if comment.member == current_member %>
         <td><%= link_to "編集", edit_review_comment_path(comment.review_id,comment.id), class: "btn btn-outline-success" %></td>
         <td><%= link_to "削除", review_comment_path(comment.review_id,comment.id), class: "btn btn-outline-danger", method: :delete %></td>

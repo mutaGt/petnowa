@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h3 class="mt-3">会員詳細</h3>
+      <h5 class="mt-3">会員詳細</h5>
       <div>会員ステータス</div>
       <% if @member.is_deleted == false %>
         有効
@@ -18,36 +18,32 @@
 
       
       <% @reviews.each do |review| %>
-      <div class="card">
-        <div class="card-body">
-          <table class="table border:none;">
-            <tr>
-              <th></th>
-              <th></th>
-              <th>商品名</th>
-              <th>タイトル</th>
-              <th>評価</th>
-              <th>レビュー内容</th>
-              <th></th>
-            </tr>
-            <tr>
-              <%if review.member.image.attached? %>
-                  <td><%= image_tag review.member.image, size: "50x50" %></td>
-                <%else%>
-                  <td><%=image_tag "no_image.jpg", size: "50x50"%></td>
-                <%end%>
-              <td><%= review.member.name %></td>
-              <td><%= review.product_name %>
-              <%= image_tag review.image_url, size: "85x85" %>
-              </td>
-              <td><%= review.title %></td>
-              <td><%= review.evaluation %>点</td>
-              <td><%= review.review_content %></td>
-              <td><%= link_to "削除", admin_member_path(review.id), class: "btn btn-danger btn-sm",  method: :delete %></td>
-            </tr>
-          </table>  
-        </div>
-      </div>
+      <table class="table border:none;">
+        <tr>
+          <th></th>
+          <th></th>
+          <th>商品名</th>
+          <th>タイトル</th>
+          <th>評価</th>
+          <th>レビュー内容</th>
+          <th></th>
+        </tr>
+        <tr>
+          <%if review.member.image.attached? %>
+              <td><%= image_tag review.member.image, size: "50x50" %></td>
+            <%else%>
+              <td><%=image_tag "no_image.jpg", size: "50x50"%></td>
+            <%end%>
+          <td><%= review.member.name %></td>
+          <td><%= review.product_name %>
+          <%= image_tag review.image_url, size: "85x85" %>
+          </td>
+          <td><%= review.title %></td>
+          <td><%= review.evaluation %>点</td>
+          <td style="width: 20%"><%= safe_join(review.review_content.split("\n"),tag(:br)) %></td>
+          <td><%= link_to "削除", admin_member_path(review.id), class: "btn btn-danger btn-sm",  method: :delete %></td>
+        </tr>
+      </table>
       <% end %>
     </div>
   </div>
