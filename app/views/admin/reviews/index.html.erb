@@ -28,7 +28,7 @@
           <td><%= review.title %></td>
           <td><%= review.evaluation %>点</td>
           <td style="width: 20%"><%= safe_join(review.review_content.split("\n"),tag(:br)) %></td>
-          <td><%= link_to "削除", admin_member_path(review.id), class: "btn btn-danger btn-sm", method: :delete %></td>
+          <td><%= link_to "削除", admin_member_path(review.id), "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-sm", method: :delete %></td>
         </tr>
       </table>
       <% end %>

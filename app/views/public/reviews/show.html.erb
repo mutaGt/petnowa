@@ -36,7 +36,7 @@
             <td style="width: 15%"><%= safe_join(@review.review_content.split("\n"),tag(:br)) %></td>
             <% if @review.member == current_member %>
             <td><%= link_to "編集", edit_review_path(@review.id), class: "btn btn-success btn-sm" %></td>
-            <td><%= link_to "削除", review_path(@review.id), class: "btn btn-danger btn-sm",  method: :delete %></td>
+            <td><%= link_to "削除", review_path(@review.id), "data-confirm" => "本当に削除しますか？",  class: "btn btn-danger btn-sm",  method: :delete %></td>
             <% else %>
             <td></td>
             <td></td>
@@ -71,7 +71,7 @@
         <td><%= safe_join(comment.comment_content.split("\n"),tag(:br)) %></td>
         <% if comment.member == current_member %>
         <td><%= link_to "編集", edit_review_comment_path(comment.review_id,comment.id), class: "btn btn-outline-success btn-sm" %></td>
-        <td><%= link_to "削除", review_comment_path(comment.review_id,comment.id), class: "btn btn-outline-danger btn-sm", method: :delete %></td>
+        <td><%= link_to "削除", review_comment_path(comment.review_id,comment.id), "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger btn-sm", method: :delete %></td>
         <% else %>
         <td></td>
         <td></td>
