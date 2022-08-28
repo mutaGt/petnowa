@@ -17,9 +17,11 @@
           </tr>
           <tr>
             <%if @review.member.image.attached? %>
-              <td><%= image_tag @review.member.image, size: "50x50" %></td>
+              <td><%= image_tag @review.member.image, size: "50x50" %><br>
+              <%= @review.created_at.strftime("%Y/%m/%d") %></td>
             <%else%>
-              <td><%=image_tag "no_image.jpg", size: "50x50"%></td>
+              <td><%=image_tag "no_image.jpg", size: "50x50"%><br>
+              <%= @review.created_at.strftime("%Y/%m/%d") %></td>
             <%end%>
             <td><%= @review.member.name %></td>
             <td><%= @review.product_name %>
@@ -59,9 +61,11 @@
       <% @comments.each do |comment| %>
       <tr>
         <%if comment.member.image.attached? %>
-          <td><%= image_tag comment.member.image, size: "50x50" %></td>
+          <td><%= image_tag comment.member.image, size: "50x50" %><br>
+          <%= comment.created_at.strftime("%Y/%m/%d") %></td>
         <%else%>
-          <td><%=image_tag "no_image.jpg", size: "50x50"%></td>
+          <td><%=image_tag "no_image.jpg", size: "50x50"%><br>
+          <%= comment.created_at.strftime("%Y/%m/%d") %></td>
         <%end%>
         <td><%= comment.member.name %></td>
         <td><%= safe_join(comment.comment_content.split("\n"),tag(:br)) %></td>

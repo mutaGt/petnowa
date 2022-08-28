@@ -6,7 +6,7 @@ class Admin::MembersController < ApplicationController
   
   def show
     @member = Member.find(params[:id])
-    @reviews = @member.reviews
+    @reviews = @member.reviews.order(created_at: :desc)
   end
   
   def update

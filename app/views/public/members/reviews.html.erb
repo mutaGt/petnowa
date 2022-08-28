@@ -11,7 +11,7 @@
           <th>タグ</th>
           <th>レビュー内容</th>
           <th></th>
-          <th></th>
+          <td><%= review.created_at.strftime("%Y/%m/%d") %></td>
         </tr>
         <tr>
           <td><%= review.evaluation %>点</td>

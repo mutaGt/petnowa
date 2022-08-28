@@ -16,9 +16,11 @@
           </tr>
           <tr>
             <%if review.member.image.attached? %>
-              <td><%= image_tag review.member.image, size: "50x50" %></td>
+              <td><%= image_tag review.member.image, size: "50x50" %><br>
+              <%= review.created_at.strftime("%Y/%m/%d") %></td>
             <%else%>
-              <td><%=image_tag "no_image.jpg", size: "50x50"%></td>
+              <td><%=image_tag "no_image.jpg", size: "50x50"%><br>
+              <%= review.created_at.strftime("%Y/%m/%d") %></td>
             <%end%>
             <td><%= review.member.name %></td>
             <td><%= review.product_name %>
@@ -30,7 +32,7 @@
             <% end %></td>
             <td><%= review.evaluation %>点</td>
             <td style="width: 20%"><%= safe_join(review.review_content.split("\n"),tag(:br)) %></td>
-            <td><%= link_to "コメント", review_path(review.id) %></td>
+            <td><%= link_to "コメント", review_path(review.id), class: "btn btn-outline-primary btn-sm" %></td>
           </tr>
         </table>
       <% end %>
