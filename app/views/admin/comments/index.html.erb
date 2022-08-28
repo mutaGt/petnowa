@@ -13,7 +13,7 @@
           <td><%= comment.member.name %><br>
           <%= comment.created_at.strftime("%Y/%m/%d") %></td>
           <td><%= safe_join(comment.comment_content.split("\n"),tag(:br)) %></td>
-          <td><%= link_to "削除", admin_comment_path(comment.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+          <td><%= link_to "削除", admin_comment_path(comment.id), class: "btn btn-danger btn-sm", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
         </tr>
         <% end %>
       </table>
