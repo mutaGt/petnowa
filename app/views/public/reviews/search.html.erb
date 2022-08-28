@@ -27,7 +27,7 @@
             <%= image_tag review.image_url, size: "85x85" %>
             </td>
             <td><%= review.title %></td>
-            <td style="width: 8%"><% review.tags.each do |tag| %>
+            <td style="width: 10%"><% review.tags.each do |tag| %>
               ・<%= tag.name %><br>
             <% end %></td>
             <td style="width: 8%"><%= review.evaluation %>点</td>

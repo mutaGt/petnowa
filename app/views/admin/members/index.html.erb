@@ -16,9 +16,9 @@
           <td><%= member.email %></td>
           <td>
             <% if member.is_deleted == false %>
-              有効
+              <b class="text-danger">有効</b>
             <% else %>
-              退会
+              <b>退会</b>
             <% end %>
           </td>
         </tr>
