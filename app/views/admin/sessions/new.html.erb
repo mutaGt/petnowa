@@ -8,12 +8,10 @@
           <td><%= f.label :email, "メールアドレス" %></td>
           <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
         </tr>
-        
         <tr>
           <td><%= f.label :password, "パスワード" %></td>
           <td><%= f.password_field :password, autocomplete: "current-password" %></td>
         </tr>
-        
         <tr>
           <td></td>
           <td><%= f.submit "ログイン",class: "btn btn-info mb-3" %></td>

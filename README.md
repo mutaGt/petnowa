@@ -25,7 +25,9 @@
 - 競合調査を行う際の1つのデータとして活用する時
 
 ## 設計書
-<...>
+###ER図
+<img width="982" alt="スクリーンショット 2022-08-29 4 54 23" src="https://user-images.githubusercontent.com/104976989/187092112-082e9a49-c2f2-4763-b8e7-f57eeb5f00e7.png">
+
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -35,4 +37,5 @@
 - IDE：Cloud9
 
 ## 使用素材
-使用検討中です
+- SOZAI GOOD URL:https://sozai-good.com/
+- フリーペンシル URL:https://iconbu.com/

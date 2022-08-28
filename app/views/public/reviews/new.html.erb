@@ -16,12 +16,10 @@
           <td><%= f.label :product_name, "商品名", class: "col-12" %></td>
           <td><%= f.text_field :product_name, autofocus: true %></td>
         </tr>
-        
         <tr>
           <td><%= f.label :title, "タイトル", class: "col-12" %></td>
           <td><%= f.text_field :title, autofocus: true %></td>
         </tr>
-        
         <tr>
           <td><%= f.label "タグ", class: "col-12" %></td>
           <td>
@@ -35,7 +33,6 @@
               <% end %>
           </td>
         </tr>
-        
         <tr>
           <td><%= f.label "評価" , class: "col-12" %></td>
           <td><%= f.radio_button :evaluation, 1 %>
@@ -49,17 +46,14 @@
               <%= f.radio_button :evaluation, 5 %>
               <%= f.label :evaluation, '5点' %></td>
         </tr>
-
         <tr>
           <td><%= f.label :review_content, "レビュー内容" , class: "col-12" %></td>
           <td><%= f.text_area :review_content, autofocus: true, size: "30x10" %></td>
         </tr>
-        
         <tr>
           <td></td>
           <td><%= f.submit "投稿する", class: "btn btn-warning" %></td>
         </tr>
-        
       </table>
     <% end %>
     </div>
