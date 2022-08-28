@@ -30,6 +30,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       end
     end
     
+    
     resources :reviews do
       collection do
         get :search
@@ -47,4 +48,5 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :comments, only: [:index, :destroy]
   end
   
+  get '*path', controller: 'application', action: 'render_404' #if Rails.env.production? 　# if Rails.env.production? を書くと開発環境ではルーティングエラーを出して、本番環境では404のページを表示する
 end

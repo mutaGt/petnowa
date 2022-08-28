@@ -3,18 +3,23 @@
     <div class="col">
       <h5>レビュー編集</h5>
       <%= form_with model: @review, url: review_path(@review.id), method: :patch do |f| %>
+      <% if @review.errors.any? %>
+        <%= @review.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @review.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
       <table style="border:none;">
-      
         <tr>
           <td><%= f.label :product_name, "商品名" %></td>
           <td><%= f.text_field :product_name, autofocus: true %></td>
         </tr>
-        
         <tr>
           <td><%= f.label :title, "タイトル" %></td>
           <td><%= f.text_field :title, autofocus: true %></td>
         </tr>
-        
         <tr>
           <td><%= f.label "タグ" %></td>
           <td>
@@ -28,7 +33,6 @@
             <% end %>
           </td>
         </tr>
-        
         <tr>
           <td><%= f.label "評価" %></td>
           <td>
@@ -44,20 +48,16 @@
             <%= f.label :evaluation, '5点', value: 5 %>
           </td>
         </tr>
-        
         <tr>
           <td><%= f.label :review_content, "コメント内容" %></td>
           <td><%= f.text_area :review_content, autofocus: true, size: "30x10" %></td>
         </tr>
-        
         <tr>
           <td></td>
           <td><%= f.submit "変更を保存", class: "btn btn-success" %></td>
         </tr>
-      
       </table>
       <% end %>
-      
     </div>
   </div>
 </div>

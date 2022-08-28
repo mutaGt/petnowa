@@ -29,6 +29,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
     if @member.update(member_params)
       redirect_to my_page_members_path
     else
+      flash.now[:alert] = "ユーザーネームまたはメールアドレスを入力してください"
       render :edit
     end
   end

@@ -40,6 +40,14 @@ class Public::ReviewsController < ApplicationController
     # 商品名、タイトルもしくは本文にwordで設定された文字が含まれていれば
       @reviews = Review.joins(:tags).where("product_name LIKE ? OR title LIKE ? OR review_content LIKE ?", "%#{params[:word]}%", "%#{params[:word]}%", "%#{params[:word]}%")
       # WHERE title LIKE '%params[:word]%' OR review_content LIKE '%params[:word]%'
+      # reviews id: 1
+      # tags id: 1, review_id: 1
+      #.     id: 2, review_id: 1
+      #.     id: 3, review_id: 1
+      # joins →
+      # reviews id: 1, tags id: 1, review_id: 1
+      # reviews id: 1, tags id: 2, review_id: 1
+      # reviews id: 1, tags id: 3, review_id: 1
   
       unless tag_ids.empty? # チェックが一つでもされていれば検索条件にタグIDを追加する
         @reviews = @reviews.where(tags: { id: tag_ids }).group(:id).having('count(*) = ?', tag_ids.size) #絞り込み(3つタグにチェックを入れたら、3つタグがついているものだけ絞り込む)
