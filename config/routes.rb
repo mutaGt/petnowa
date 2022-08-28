@@ -1,3 +1,9 @@
+class RestrictedListConstraint
+  def matches?(request)
+    !request.fullpath.include?("active_storage")
+  end
+end
+
 Rails.application.routes.draw do
   
 devise_for :members,skip: [:passwords], controllers: {
@@ -48,5 +54,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :comments, only: [:index, :destroy]
   end
   
-  get '*path', controller: 'application', action: 'render_404' #if Rails.env.production? 　# if Rails.env.production? を書くと開発環境ではルーティングエラーを出して、本番環境では404のページを表示する
+  get '*path', controller: 'application', action: 'render_404', constraints: RestrictedListConstraint.new #unless request.fullpath.include?("active_storage")# if Rails.env.production? 　# if Rails.env.production? を書くと開発環境ではルーティングエラーを出して、本番環境では404のページを表示する
 end
+
