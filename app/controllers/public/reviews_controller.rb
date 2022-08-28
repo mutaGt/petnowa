@@ -44,7 +44,7 @@ class Public::ReviewsController < ApplicationController
       unless tag_ids.empty? # チェックが一つでもされていれば検索条件にタグIDを追加する
         @reviews = @reviews.where(tags: { id: tag_ids }).group(:id).having('count(*) = ?', tag_ids.size) #絞り込み(3つタグにチェックを入れたら、3つタグがついているものだけ絞り込む)
       end
-      @reviews = @reviews.order(created_at: :desc).page(params[:page]) #並び替えorder=順序 created_at=作成日時 desc=降順(=最新順) asc=昇順(=1.2.3...)
+      @reviews = @reviews.order(created_at: :desc).page(params[:page]).distinct #並び替えorder=順序 created_at=作成日時 desc=降順(=最新順) asc=昇順(=1.2.3...)
     else
       redirect_to request.referer, alert: "入力または選択してください"
     end
