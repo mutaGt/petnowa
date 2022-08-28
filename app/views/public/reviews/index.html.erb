@@ -37,12 +37,12 @@
                 <%# 楽天APIで持ってきた画像を表示↓ %>
                 <%= image_tag review.image_url, size: "85x85" %>
                 <td><%= review.title %></td>
-                <td><% review.tags.each do |tag| %>
+                <td style="width: 8%"><% review.tags.each do |tag| %>
                 ・<%= tag.name %><br>
                 <% end %></td>
-                <td><%= review.evaluation %>点</td>
+                <td style="width: 8%"><%= review.evaluation %>点</td>
                 <td style="width: 20%"><%= safe_join(review.review_content.split("\n"),tag(:br)) %></td>
-                <td><%= link_to "コメント一覧", review_path(review.id), class: "btn btn-outline-primary btn-sm" %></td>
+                <td style="width: 12%"><%= link_to "コメント一覧", review_path(review.id), class: "btn btn-outline-primary btn-sm" %></td>
               </tr>
             </table>
       <% end %>
