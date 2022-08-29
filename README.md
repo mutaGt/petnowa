@@ -28,6 +28,13 @@
 ### ER図
 <img width="982" alt="スクリーンショット 2022-08-29 4 54 23" src="https://user-images.githubusercontent.com/104976989/187092112-082e9a49-c2f2-4763-b8e7-f57eeb5f00e7.png">
 
+### 画面遷移図
+#### 会員側
+<img width="1201" alt="スクリーンショット 2022-08-29 17 46 01" src="https://user-images.githubusercontent.com/104976989/187163617-ad3b6f18-3c6a-47da-9f4c-beb3b1ee7445.png">
+
+#### 管理者側
+<img width="891" alt="スクリーンショット 2022-08-29 17 49 31" src="https://user-images.githubusercontent.com/104976989/187163803-cab055cf-37c8-44b5-94e5-c9690ae615b6.png">
+
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -39,3 +46,4 @@
 ## 使用素材
 - SOZAI GOOD URL:https://sozai-good.com/
 - フリーペンシル URL:https://iconbu.com/
+- ふぉんときゅーとがーる。 URL:http://font.cutegirl.jp/jkmarugo.html
