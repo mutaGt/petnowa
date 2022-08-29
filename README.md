@@ -33,8 +33,7 @@
 <img width="1201" alt="スクリーンショット 2022-08-29 17 46 01" src="https://user-images.githubusercontent.com/104976989/187163617-ad3b6f18-3c6a-47da-9f4c-beb3b1ee7445.png">
 
 #### 管理者側
-<img width="891" alt="スクリーンショット 2022-08-29 17 49 31" src="https://user-images.githubusercontent.com/104976989/187163803-cab055cf-37c8-44b5-94e5-c9690ae615b6.png">
-
+<img width="1114" alt="スクリーンショット 2022-08-29 19 22 24" src="https://user-images.githubusercontent.com/104976989/187180471-830bb696-5e55-468d-a3e2-698cacb6f82a.png">
 
 ## 開発環境
 - OS：Linux(CentOS)
