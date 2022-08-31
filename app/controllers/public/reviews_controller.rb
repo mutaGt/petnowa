@@ -23,7 +23,7 @@ class Public::ReviewsController < ApplicationController
   #  rails map{|k, v| v == 1 ? k : nil}.compact 35~40行目をこれに置き換える事も出来る
   def search
       
-    # チェックボックスでチェックしたtag_idを取得
+    # チェックボックスでチェックしたtag_idを取得 (例) 1つめと3つめのタグのチェックボックスを選択した時
     #{"1"=>"1", "2"=>"0", "3"=>"1", "4"=>"0", "5"=>"0"}
     @tag_ids = params[:tag_ids]
     tag_ids = []
