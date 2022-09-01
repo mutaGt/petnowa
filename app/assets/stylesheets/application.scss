@@ -65,3 +65,10 @@
   background-attachment: fixed;
   background-size: contain;;
 }
+
+@media screen and (max-width: 425px) {
+  .search-ul {
+    width: 100%;
+  }
+  
+}
