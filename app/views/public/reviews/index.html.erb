@@ -12,6 +12,7 @@
         </ul>
       <% end %>
       <% @reviews.each do |review| %>
+      <div style="overflow-x:auto;">
         <table class="table border:none;">
           <tr>
             <th></th>
@@ -44,6 +45,7 @@
             <td style="width: 12%"><%= link_to "コメント一覧", review_path(review.id), class: "btn btn-outline-primary btn-sm" %></td>
           </tr>
         </table>
+      </div>
       <% end %>
       <div class="row justify-content-center">
         <%= paginate @reviews %>

@@ -3,6 +3,7 @@
     <div class='col-12'>
       <h5>過去の投稿</h5>
       <% @reviews.each do |review| %>
+      <div style="overflow-x:auto;">
       <table class="table border:none;">
         <tr>
           <th>評価</th>
@@ -27,6 +28,7 @@
           <td><%= link_to "削除", review_path(review.id, member_review: true), method: :delete, "data-confirm" => "本当に削除しますか？" , class: "btn btn-danger btn-sm" %></td>
         </tr>
       </table>
+      </div>
       <% end %>
     </div>
   </div>
