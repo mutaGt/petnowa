@@ -66,9 +66,35 @@
   background-size: contain;;
 }
 
+#review_table {
+  min-width: 900px;
+}
+
+@media screen and (max-width: 1024px) {
+  .search-ul {
+  width: 100%;
+  }
+  .login-button {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .search-ul {
+    width: 100%;
+  }
+  .login-button {
+    width: 65%;
+  }
+}
+
+
 @media screen and (max-width: 425px) {
-  
    .search-ul {
+    width: 100%;
+  }
+  
+  .login-button {
     width: 100%;
   }
 }
