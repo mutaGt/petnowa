@@ -1,15 +1,16 @@
 <div class="container-fluid visual-404">
-  <div class="row"> 
-    <div class="col-12 d-flex align-items-center vh100">
-      <div class="card mx-auto">
+  <div class="row">
+    <div class="col-lg-12 d-flex align-items-center vh100">
+      <div class="card mx-auto error">
         <div class="card-body">
           <div class="text-center">
-            <h1><b>404</b></h1>
-            <h2>お探しのページは見つかりませんでした。</h2>
-            <p>お手数ですがトップページに戻り、引き続きペットの輪をご利用ください</p>
+            <h1 class="error-message"><b>404</b></h1>
+            <h2 class="error-message"><b>お探しのページは見つかりませんでした。</b></h2>
+            <p class="error-message-2">お手数ですがトップページに戻り、引き続きペットの輪をご利用ください</p>
           </div>
-          <%= link_to 'トップページへ', root_path, class: "btn btn-outline-secondary btn-sm btn-block mb-1 sign_in" %>
-        </div>  
-      </div>
-    </div>  
+          <div class="top-button"><%= link_to 'トップページへ', root_path, class: "btn btn-outline-secondary btn-sm btn-block mb-1 sign_in" %></div>
+        </div>
+      </div>  
+    </div>
+  </div>  
 </div>

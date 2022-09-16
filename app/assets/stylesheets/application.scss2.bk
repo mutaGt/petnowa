@@ -63,10 +63,17 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: contain;
+  background-size: contain;;
 }
 
-.review_table {
+
+↓id指定の時の書き方
+#review_table {
+  min-width: 900px;
+}
+
+↓class指定の時の書き方
+.review_table2 { 
   min-width: 900px;
 }
 
@@ -74,21 +81,8 @@
   .search-ul {
   width: 100%;
   }
-  
   .login-button {
     width: 60%;
-  }
-  
-  .error {
-    width: 67%;
-  }
-  
-  .error-message {
-    font-size: 38px;
-  }
-  
-  .error-message-2 {
-    font-size: 18.5px;
   }
 }
 
@@ -96,12 +90,7 @@
   .search-ul {
     width: 100%;
   }
-  
   .login-button {
-    width: 65%;
-  }
-  
-  .error {
     width: 65%;
   }
 }
@@ -114,29 +103,5 @@
   
   .login-button {
     width: 100%;
-  }
-  
-  .error {
-    width: 60%;
-  }
-  
-  .error-message {
-    font-size: 15px;
-  }
-  
-  .error-message-2 {
-    font-size: 11px;
-  }
-  
-  .card-body {
-    font-size: 10px;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-  }
-  
-  .top-button {
-    width: 13em;
-    height: 3em;
   }
 }

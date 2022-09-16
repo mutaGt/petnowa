@@ -11,18 +11,20 @@
           <% end %>
         </ul>
       <% end %>
-      <table style="border:none;">
-        <tr>
-          <td><%= f.label :product_name, "商品名(編集不可)" %></td>
-          <td><%= f.text_field :product_name, readonly: true, class: "text-secondary" %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :title, "タイトル" %></td>
-          <td><%= f.text_field :title, autofocus: true %></td>
-        </tr>
-        <tr>
-          <td><%= f.label "タグ" %></td>
-          <td>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm col-md-5 col-lg-2"><%= f.label :product_name, "商品名(編集不可)", class: "col-12" %></div>
+          <div class="col-sm col-md-5 col-lg-4"><%= f.text_field :product_name, readonly: true, class: "text-secondary w-100" %></div>
+        </div>
+        
+        <div class="row mt-2">
+          <div class="col-sm col-md-5 col-lg-2"><%= f.label :title, "タイトル", class: "col-12" %></div>
+          <div class="col-sm col-md-5 col-lg-4"><%= f.text_field :title, autofocus: true, class: "w-100" %></div>
+        </div>
+        
+        <div class="row mt-2">
+          <div class="col-sm col-md-5 col-lg-2"><%= f.label "タグ", class: "col-12" %></div>
+          <div class="col-sm col-md-5 col-lg-4">
             <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
               <div class='form-check'>
                 <%= tag.label class: 'form-check-label' do %>
@@ -31,11 +33,12 @@
                 <% end %>
               </div>
             <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td><%= f.label "評価" %></td>
-          <td>
+          </div>
+        </div>
+        
+        <div class="row mt-2">
+          <div class="col-sm col-md-5 col-lg-2"><%= f.label "評価", class: "col-12" %></div>
+          <div class="col-sm col-md-5 col-lg-4">
             <%= f.radio_button :evaluation, '1点' %>
             <%= f.label :evaluation, '1点', value: 1 %>
             <%= f.radio_button :evaluation, '2点' %>
@@ -46,17 +49,19 @@
             <%= f.label :evaluation, '4点', value: 4 %>
             <%= f.radio_button :evaluation, '5点' %>
             <%= f.label :evaluation, '5点', value: 5 %>
-          </td>
-        </tr>
-        <tr>
-          <td><%= f.label :review_content, "コメント内容" %></td>
-          <td><%= f.text_area :review_content, autofocus: true, size: "30x10" %></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><%= f.submit "変更を保存", class: "btn btn-success" %></td>
-        </tr>
-      </table>
+          </div>
+        </div>
+        
+        <div class="row mt-2">
+          <div class="col-sm col-md-5 col-lg-2"><%= f.label :review_content, "レビュー内容", class: "col-12" %></div>
+          <div class="col-sm col-md-5 col-lg-4"><%= f.text_area :review_content, autofocus: true, size: "37x10" %></div>
+        </div>
+        
+        <div class="row mt-2">
+          <div class="col-sm col-md-5 col-lg-2"></div>
+          <div class="d-flex justify-content-center col-lg-3"><%= f.submit "変更を保存", class: "btn btn-success" %></div>
+        </div>
+      </div>
       <% end %>
     </div>
   </div>
