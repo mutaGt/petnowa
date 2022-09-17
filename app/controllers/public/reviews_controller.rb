@@ -1,5 +1,6 @@
 class Public::ReviewsController < ApplicationController
   
+  
   def new
     @review = Review.new
     @review.review_tags.build
