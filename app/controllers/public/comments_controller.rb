@@ -1,4 +1,5 @@
 class Public::CommentsController < ApplicationController
+  before_action :authenticate_member!, if: :need_auth_page?
   
   def new
     @comment = Comment.new
@@ -35,6 +36,12 @@ class Public::CommentsController < ApplicationController
   
   def comment_params
     params.require(:comment).permit(:comment_content)
+  end
+  
+  def need_auth_page?
+    unless controller_name == 'homes' && action_name =='top'
+      true
+    end
   end
   
 end

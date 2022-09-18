@@ -1,5 +1,5 @@
 class Public::ReviewsController < ApplicationController
-  
+  before_action :authenticate_member!, if: :need_auth_page?
   
   def new
     @review = Review.new
@@ -99,4 +99,9 @@ class Public::ReviewsController < ApplicationController
     params.require(:review).permit(:product_name, :title, :evaluation, :review_content, :tag_ids => [])
   end
   
+  def need_auth_page?
+    unless controller_name == 'homes' && action_name =='top'
+      true
+    end
+  end
 end
