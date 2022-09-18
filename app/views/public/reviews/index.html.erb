@@ -5,9 +5,9 @@
       <%= form_tag(search_reviews_path, :method => :get) do %>
         <%= text_field_tag :word %>
         <%= submit_tag "検索", class: "btn btn-success" %>
-        <ul class="search-ul">
+        <ul class="search-ul d-flex flex-wrap">
           <% Tag.all.each do |tag| %>
-            <li class="search-li"><%= check_box :tag_ids, tag.id %><%= tag.name %></li>
+            <li class="search-li"><p><%= check_box :tag_ids, tag.id %><span><%= tag.name %></span></p></li>
           <% end %>
         </ul>
       <% end %>
