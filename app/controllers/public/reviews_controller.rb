@@ -9,6 +9,9 @@ class Public::ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.member_id = current_member.id
+    unless @review.member == current_member
+      redirect_to reviews_path
+    end
     if @review.save
       redirect_to reviews_path
     else
@@ -74,6 +77,9 @@ class Public::ReviewsController < ApplicationController
   
   def update
     @review = Review.find(params[:id])
+    unless @review.member == current_member
+      redirect_to reviews_path
+    end
     if @review.update(review_params)
       redirect_to review_path(@review)
     else
@@ -85,6 +91,9 @@ class Public::ReviewsController < ApplicationController
   
   def destroy
     @review = Review.find(params[:id])
+    unless @review.member == current_member
+      redirect_to reviews_path
+    end
     @review.destroy
     if params[:member_review]
       redirect_to reviews_members_path
