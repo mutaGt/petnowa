@@ -18,16 +18,27 @@ class Public::CommentsController < ApplicationController
   
   def edit
     @comment = Comment.find(params[:id])
+    unless @comment.member == current_member
+      redirect_to review_path(@comment.review.id)
+    end
   end
   
   def update
     @comment = Comment.find(params[:id])
+    unless @comment.member == current_member
+      redirect_to review_path(@comment.review.id)
+      return
+    end
     @comment.update(comment_params)
     redirect_to review_path(@comment.review.id)
   end
   
   def destroy
     @comment = Comment.find(params[:id])
+    unless @comment.member == current_member
+      redirect_to review_path(@comment.review.id)
+      return
+    end
     @comment.destroy
     redirect_to reviews_path
   end
